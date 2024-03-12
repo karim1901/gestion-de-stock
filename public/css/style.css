@@ -1,0 +1,733 @@
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+body{
+  font-family: "Montserrat", sans-serif;
+} 
+
+a{
+  text-decoration: none;
+  color: rgb(240, 237, 237);
+}
+
+/* Generic */
+.containerLogin {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  background-color: #ecf0f3;
+  color: #a0a5a8;
+}
+
+/**/
+.main { 
+  position: relative;
+  width: 600px;
+  min-width: 600px;
+  min-height: 600px;
+  height: 600px;
+  padding: 25px;
+  background-color: #ecf0f3;
+  box-shadow: 10px 10px 10px #d1d9e6, -10px -10px 10px #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+@media (max-width: 1200px) {
+  .main {
+    transform: scale(0.7);
+  }
+}
+@media (max-width: 1000px) {
+  .main {
+    transform: scale(0.6);
+  }
+}
+@media (max-width: 800px) {
+  .main {
+    transform: scale(0.5);
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    transform: scale(0.4);
+  }
+}
+
+.main .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 600px;
+  height: 100%;
+  padding: 25px;
+  background-color: #ecf0f3;
+  transition: 1.25s;
+}
+
+.main .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.main .form__icon {
+  object-fit: contain;
+  width: 30px;
+  margin: 0 5px;
+  opacity: 0.5;
+  transition: 0.15s;
+}
+.main .form__icon:hover {
+  opacity: 1;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.main .form__input {
+  width: 350px;
+  height: 40px;
+  margin: 4px 0;
+  padding-left: 25px;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ecf0f3;
+  transition: 0.25s ease;
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9;
+}
+.main .form__input:focus {
+  box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
+}
+.main .form__span {
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+.main .form__link {
+  color: #181818;
+  font-size: 15px;
+  margin-top: 25px;
+  border-bottom: 1px solid #a0a5a8;
+  line-height: 2;
+}
+
+.main .title {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 3;
+  color: #181818;
+}
+
+.main .description {
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.main .button {
+  width: 180px;
+  height: 50px;
+  border-radius: 25px;
+  margin-top: 50px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1.15px;
+  background-color: #4B70E2;
+  color: #f9f9f9;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+  border: none;
+  outline: none;
+}
+
+.main .b-container {
+  left: calc(100% - 600px );
+  z-index: 0;
+}
+
+@keyframes is-gx {
+  0%, 10%, 100% {
+    width: 400px;
+  }
+  30%, 50% {
+    width: 500px;
+  }
+}
+
+
+
+
+
+
+
+
+.navBar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  /* padding: 20px; */
+  height: 50px;
+  background-color: aliceblue;
+  border-bottom: 1px solid rgb(219, 219, 219);
+  color: #4a585e;
+  padding: 0 20px;
+}
+
+.navBar .logo{
+  /* width: 200px;
+  height: 100%; */
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+.navBar .logo img{
+  width: 100%;
+  height: 100%;
+}
+
+.navBar .profile{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.navBar .profile svg{
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+
+}
+.navBar .profile p{
+  font-size: 17px;
+  padding-right: 15px;
+}
+.navBar .profile button{
+  width: 80px;
+  height: 20px;
+  font-size: 14px;
+  border: none; 
+  border-left: 1px solid #a0a5a8;
+  background-color: #2c687a;
+  color: white;
+}
+
+
+
+
+::-webkit-scrollbar{
+  width: 2px;
+  background-color: rgb(173, 171, 171);
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(91, 91, 91);
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+.containerContent .side{
+  width: 250px;
+  overflow: hidden;
+  position: relative;
+  /* background-color: #2c687a; */
+  background-color: rgb(74, 88, 94);
+  color: #e3e7e8;
+  transition: .4s;
+}
+.containerContent .side.active{
+  width: 65px;
+  padding-left: 5px;
+}
+
+.containerContent .side .menu{
+  margin-top: 50px;
+  width: 300px;
+  position: absolute;
+}
+
+.containerContent .side .menu ul{
+  width: 300px;
+}
+.containerContent .side .menu ul li{
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  padding: 15px 10px;
+  list-style: none;
+  width: 300px;
+  position: relative;
+
+  /* padding-left: -255px; */
+}
+
+.containerContent .side .menu ul li p{
+  width: 200px;
+  position: absolute;
+  left: 65px;
+}
+
+.containerContent .side.active .menu ul li:hover{
+  background-color:rgb(30, 150, 201);
+  width: 55px;
+  border-radius: 50px;
+}
+
+
+.containerContent .side .menu ul li:hover{
+  background-color: rgb(30, 150, 201);
+}
+
+
+.containerContent .side .menu ul li svg{
+  width: 25px;
+  height: 25px;
+  margin-left:5px;
+  /* margin: 0 10px; */
+  /* background-color: #aac2c9; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.containerContent{
+  display: flex;
+  background-color: #2c687a;
+}
+
+.containerContent .container{
+  width: calc(100% - 250px);
+  height: calc(100vh - 50px);
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: aliceblue;
+  transition: .4s;
+  padding: 0 10px ;
+}
+.containerContent .container.active{
+  width: calc(100% - 45px);
+}
+
+
+
+.containerContent .container .header{
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: end;
+  margin-top: 10px;
+}
+.containerContent .container .header p{
+  margin-left: 30px;
+  font-size: 25px;
+}
+.containerContent .container .header ion-icon{
+  font-size: 25px;
+}
+
+
+
+
+
+
+
+.containerContent .container .search{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+
+}
+
+
+.containerContent .container .search input{
+  padding-left: 15px;
+  width: 300px;
+  outline: none;
+}
+
+
+.containerContent .container .search button{
+  margin-left: 10px; 
+  width: 100px;
+  background-color: rgb(74, 88, 94);
+  color: #d0d7d9;
+  border: 1px solid;
+  height: 30px;
+}
+
+
+.containerContent .container .search .date select , 
+.containerContent .container .search .date input {
+  width: 70px;
+  height: 30px;
+  background-color: #d1d9e6;
+  color: #4a585e;
+  border: 1px solid rgb(173, 171, 171);
+  border-radius: 2px;
+}
+
+.containerContent .container .search .date input {
+  /* padding-left: 15px; */
+  text-align: center;
+  outline: none;
+
+}
+
+
+
+
+
+.containerContent .container .tab{
+  margin-top: 50px;
+  /* background-color: #d0d7d9; */
+}
+
+
+.containerContent .container .tab table{
+  width: 100%;
+}
+
+.containerContent .container .tab table th{
+  text-align: start;
+  color: rgb(74, 88, 94);
+  height: 30px;
+  border-bottom:1px solid rgb(218, 215, 215) ;
+}
+
+
+/* .containerContent .container .tab table th:nth-child(3),
+.containerContent .container .tab table th:nth-child(4),
+.containerContent .container .tab table th:nth-child(5){
+  width: 10%;
+}
+
+.containerContent .container .tab table th:nth-child(2),
+.containerContent .container .tab table th:nth-child(8),
+.containerContent .container .tab table th:nth-child(9){
+  text-align: center;
+}
+
+
+.containerContent .container .tab table td:nth-child(3),
+.containerContent .container .tab table td:nth-child(4),
+.containerContent .container .tab table td:nth-child(5){
+  width: 10%;
+}
+
+.containerContent .container .tab table td:nth-child(2),
+.containerContent .container .tab table td:nth-child(8),
+.containerContent .container .tab table td:nth-child(9){
+  text-align: center;
+} */
+
+
+.containerContent .container .tab table th:last-child{
+  text-align: center;
+} 
+
+
+.containerContent .container .tab table td:last-child{
+  text-align: center;
+} 
+
+.containerContent .container .tab table td{
+  height: 40px;
+}
+
+
+.containerContent .container .tab table tr .actions{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30%;
+  align-items: center;
+}
+
+.containerContent .container .tab table tr .actions ion-icon{
+  color: #181818;
+}
+
+.containerContent .container .tab table tr .actions button{
+  background-color: aliceblue;
+  border: none;
+}
+
+
+
+
+.containerContent .container .add {
+  display: flex; 
+  justify-content: space-between;
+  margin-top: 30px;
+  padding-right: 50px;
+}
+
+.containerContent .container .add button{
+  background-color: rgb(74, 88, 94);
+  color: #d0d7d9;
+  border: 1px solid;
+  height: 30px;
+  padding: 0 20px;
+}
+
+.containerContent .container .add .search{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.containerContent .container .form{
+  background-color: white;
+  width: 800px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px 10px;
+  box-shadow: 0 3px 10px rgb(173, 171, 171);
+}
+
+
+.containerContent .container .form h2{
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.containerContent .container .form .inputs{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.containerContent .container .form .inputs input{
+  width: 388px;
+  height: 35px;
+  padding-left: 15px;
+  margin-top: 5px;
+  outline: none;
+  display: block;
+}
+
+.containerContent .container .form select{
+  width: 100%;
+  height: 35px;
+  margin-top:5px ;
+  padding-left: 15px;
+}
+
+
+.containerContent .container .form .fournisseur p,
+  .containerContent .container .form .repo p{
+  font-size:14px ;
+  margin-top: 5px;
+  color: #a0a5a8;
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+.containerContent .container .form button{
+  width: 100%;
+  background-color: rgb(74, 88, 94);
+  color: white;
+  height: 35px;
+  margin-top: 20px;
+}
+
+
+
+.containerContent .container .form .fournisseur button{
+  margin: 0;
+  margin-top: 5px;
+}
+
+
+.containerContent .container .form .title,
+.containerContent .container .form .quantity,
+.containerContent .container .form .pricePurchase,
+.containerContent .container .form .price{
+  position: relative;
+}
+
+
+
+
+.containerContent .container .form .inputs small{
+  color: red;
+  font-size:12px ;
+  margin-top: -10px;
+}
+
+
+
+
+.containerContent .container .vente{
+  /* background-color: #2c687a; */
+  display: flex;
+}
+
+.containerContent .container .vente .tab{
+  width: calc(100% - 350px);
+}
+
+
+.containerContent .container .vente .cart{
+  width: 350px;
+  height: calc(100vh - 200px);
+  /* background-color: #a0a5a8; */
+  margin-top: 40px;
+  padding: 10px 10px 0 10px;
+  border-left: 1px solid rgb(173, 171, 171);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.containerContent .container .vente .cart .client{
+  font-size:14px ;
+  margin-top: 10px;
+  color: #a0a5a8;
+}
+
+.containerContent .container .vente .cart button{
+  width: 100%;
+  background-color: rgb(74, 88, 94);
+  color: white;
+  height: 35px;
+  margin-top: 20px;
+}
+
+.containerContent .container .vente .cart .client select{
+  width: 100%;
+  height: 35px;
+  margin-top:5px ;
+  padding-left: 15px;
+}
+
+
+
+
+.containerContent .container .vente .cart .content table{
+  width: 100%;
+  margin-top: 20px;
+}
+
+.containerContent .container .vente .cart .content table th{
+  text-align: center;
+  border-bottom: 1px solid rgb(218, 215, 215);
+  height: 40px;
+}
+
+.containerContent .container .vente .cart .content table th:first-child{
+  text-align: start;
+}
+
+.containerContent .container .vente .cart .content table td{
+  height: 35px;
+  text-align: center;
+}
+
+.containerContent .container .vente .cart .content table td:first-child{
+  text-align: start;
+}
+
+.containerContent .container .vente .cart .content table button{
+  background-color: aliceblue;
+  border: none;
+  margin: 0;
+}
+
+
+.containerContent .container .vente .cart .content .totale{
+  background-color: #e7f0f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 50px 5px 20px;
+}
+
+
+
+
+
+
+
+
+
+.containerContent .container .addToCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerContent .container .addToCart form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerContent .container .addToCart button{
+  background-color: aliceblue;
+  border: none;
+}
+
+
+.containerContent .container .vente .cart .content table ion-icon{
+  color: #181818;
+}
+
+.containerContent .container .addToCart input{
+  width: 50px;
+  text-align: center;
+  margin-right: 20px;
+  outline: none;
+}
