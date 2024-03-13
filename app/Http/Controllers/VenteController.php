@@ -16,13 +16,28 @@ class VenteController extends Controller
         $admin = Auth::user();
 
         $orders = DB::table('orders')
-        ->join('employees', 'employees.id', '=', 'orders.id_employee')
         ->join('clients', 'clients.id', '=', 'orders.id_client')
-        ->select('employees.name as nameEmp','clients.name as nameClient','orders.totale as totale', 'orders.created_at as dateOrder' )
+        ->select('orders.id as id','orders.supplier as nameSupplier','clients.name as nameClient','orders.totale as totale', 'orders.created_at as dateOrder' )
         ->latest('orders.created_at')->get();
 
+        $orders_profite = DB::table('product_orders')
+        ->join('products', 'products.id', '=', 'product_orders.id_product')
+        ->join('orders', 'orders.id', '=', 'product_orders.id_order')
+        ->join('clients', 'clients.id', '=', 'orders.id_client')
+        ->select('orders.id as id', 
+                DB::raw('SUM(products.pricePurchase * product_orders.quntityP) AS totalePur')
+                )
+        ->groupBy('orders.id')
+        ->orderByDesc('orders.created_at')
+        ->get();
+
+
+        $dateOredrs = DB::table('orders')
+        ->join('clients', 'clients.id', '=', 'orders.id_client')
+        ->select(DB::raw('YEAR(orders.created_at) as yearOrder') )
+        ->latest('orders.created_at')->get();
         
-        return view('vente.index',compact('admin','orders'));
+        return view('vente.index',compact('admin','orders','orders_profite','dateOredrs'));
 
     }
 

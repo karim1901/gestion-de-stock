@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('totale');
+            $table->float('totale',10,2);
             
-            $table->unsignedBigInteger('id_employee');
-            $table->foreign('id_employee')->references('id')->on('employees');
-
+            $table->string('supplier');
 
             $table->unsignedBigInteger('id_client');
             $table->foreign('id_client')->references('id')->on('clients');

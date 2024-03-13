@@ -7,10 +7,13 @@
 
 
 
-    <div class="search">
-        <input type="text">
-        <button>Recherche</button>
-    </div>
+    <form action="{{route('searchDashbord')}}" method="post">
+        @csrf 
+        <div class="search">
+            <input type="text" placeholder="Recherche" name="search">
+            <button>Recherche</button>
+        </div>
+    </form>
 
     <div class="vente">
         <div class="tab">
@@ -31,7 +34,7 @@
                         <tr>
                             <td>{{$product->title}}</td>
                             <td>{{$product->quantity}}</td>
-                            <td>{{$product->price}},00</td>
+                            <td>{{number_format($product->price,2)}}</td>
                             <td>{{$product->nameFour}}</td>
                             <td>{{$product->nameDepot}}</td>
                             <td class="addToCart">
@@ -54,17 +57,8 @@
         <div class="cart">
             <h2>Panier</h2>
 
-            <form action="{{route('order.store')}}" method="post">
-                @csrf
-            <div class="client">
-                <p>Choisir Fournisseur</p>
-                <select name="client" id="">
-                    @foreach ($clients as $client)
-                        <option  value={{$client->id}}>{{$client->name}}</option>
-                    @endforeach
-                </select>
-                <a href="{{route('client.create')}}"><button type="button">Ajouter Client</button></a>
-            </div>
+
+
     
             <div class="content">
                     <table>
@@ -78,17 +72,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <?php $totale = 0 ; ?>
+                            
                             @foreach ($orderTems as $orderTem)
                                 <tr>
                                     <td>{{$orderTem->title}}</td>
-                                    <td>{{$orderTem->price}},00</td>
+                                    <td>{{ number_format($product->price, 2) }}</td>
                                     <td>x{{$orderTem->quantity}}</td>
-                                    <td>{{$orderTem->quantity*$orderTem->price}},00</td>
+                                    <td>{{number_format($orderTem->quantity*$orderTem->price,2) }}</td>
+                                    <?php $totale += $orderTem->quantity * $orderTem->price; ?>
                                     <td>
-                                        <button>
-                                            <ion-icon name="trash-outline"></ion-icon>
-                                        </button>
+                                        <form action="{{route('OrderTem.destroy',$orderTem->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button>
+                                                <ion-icon name="trash-outline"></ion-icon>
+                                            </button>
+                                        </form>
+
                                     </td>
                                 </tr>
 
@@ -98,11 +99,22 @@
                     <hr>
                     <div class="totale">
                         <h3>Totale</h3>
-                        <h3>0 DH</h3>
+                        <h3>{{number_format($totale,2)}} DH</h3>
                     </div>
-                    <button>Confirmer</button>
+                    <form action="{{route('order.store')}}" method="post">
+                        @csrf
+                        <div class="client">
+                            <p>Choisir Fournisseur</p>
+                            <select name="client" id="">
+                                @foreach ($clients as $client)
+                                    <option  value={{$client->id}}>{{$client->name}}</option>
+                                @endforeach
+                            </select>
+                            <a href="{{route('client.create')}}"><button type="button">Ajouter Client</button></a>
+                        </div>
+                        <button>Confirmer</button>
+                    </form>
             </div>
-            </form>
         </div>    
 
     </div>

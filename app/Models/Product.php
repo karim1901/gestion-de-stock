@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Achat;
 use App\Models\Admin;
 use App\Models\Depot;
 use App\Models\ProductOrder;
@@ -29,4 +30,10 @@ class Product extends Model
     public function admin(){
         return $this->belongsTo(Admin::class,'id_admin' ,'id') ;
     }
+
+
+    public function achat(){
+        return $this->belongsTo(Achat::class,'id_product' ,'id') ;
+    }
+
 }

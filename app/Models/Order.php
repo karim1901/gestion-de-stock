@@ -16,7 +16,7 @@ class Order extends Model
 
     protected $fillable=[
         'totale',
-        'id_employee',
+        'supplier',
         'id_client',
         'id_admin'
     ];

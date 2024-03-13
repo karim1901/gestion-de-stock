@@ -12,15 +12,22 @@
 
 
     @auth
+
         <x-navbar :user="$admin" />
 
         <div class="containerContent">
-
-            <x-side />
+            
+            @if ($admin->role == 'admin')
+                <x-side />
+            @else
+                <x-sideEmp />
+            @endif
 
             <div class="container active">
                 <div class="header">
-                    <ion-icon onclick="toggleMenu()" name="menu-outline"></ion-icon>
+                    <div class="icon">
+                        <ion-icon onclick="toggleMenu()" name="menu-outline"></ion-icon>
+                    </div>
                     <p>@yield('title')</p>
                 </div>
                 

@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('quantity');
-            $table->string('pricePurchase');
-            $table->string('price');
+            $table->integer('quantity');
+            $table->float('pricePurchase',10,2);
+            $table->float('price',10,2);
 
             $table->unsignedBigInteger('id_admin');
             $table->foreign('id_admin')->references('id')->on('admins');

@@ -5,10 +5,13 @@
 
 <div class="add">
     <a href="{{route('fournisseur.create')}}"><button>Ajouter Fournisseur</button></a>
-    <div class="search">
-        <input type="text" placeholder="Recherche" name="search">
-        <button>Recherche</button>
-    </div>
+    <form action="{{route('searchFournisseur')}}" method="post">
+        @csrf 
+        <div class="search">
+            <input type="text" placeholder="Recherche" name="search">
+            <button>Recherche</button>
+        </div>
+    </form>
 </div>
 
 

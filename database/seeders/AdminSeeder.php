@@ -25,6 +25,8 @@ class AdminSeeder extends Seeder
             'phone' => '0600000000',
             'userName' => 'Ahmed0290',
             'password'=> $pass  ,
+            'role'=> 'admin'  ,
+            'code'=> '12341234'  ,
         ]);
     }
 }

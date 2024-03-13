@@ -28,7 +28,7 @@ class DashbordController extends Controller
 
         $orderTems = DB::table('order_tems')
         ->join('products', 'products.id', '=', 'order_tems.id_product')
-        ->select('products.title as title', 'products.price as price', 'order_tems.quntityP as quantity')
+        ->select('products.title as title', 'products.price as price', 'order_tems.quntityP as quantity', 'order_tems.id as id')
         ->latest('order_tems.created_at')
         ->get();
     

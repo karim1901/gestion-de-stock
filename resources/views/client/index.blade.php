@@ -5,10 +5,13 @@
 
 <div class="add">
     <a href="{{route('client.create')}}"><button>Ajouter Client</button></a>
-    <div class="search">
-        <input type="text" placeholder="Recherche" name="search">
-        <button>Recherche</button>
-    </div>
+    <form action="{{route('searchClient')}}" method="post">
+        @csrf 
+        <div class="search">
+            <input type="text" placeholder="Recherche" name="search">
+            <button>Recherche</button>
+        </div>
+    </form>
 </div>
 
 

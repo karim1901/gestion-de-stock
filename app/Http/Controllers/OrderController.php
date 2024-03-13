@@ -51,7 +51,7 @@ class OrderController extends Controller
         if($totale > 0){
             Order::create([
                 'totale'=>$totale,
-                'id_employee'=>Auth::user()->id,
+                'supplier'=>Auth::user()->name,
                 'id_client'=>$request->client,
                 'id_admin'=>1
             ]);

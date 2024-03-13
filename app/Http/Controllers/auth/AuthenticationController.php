@@ -13,7 +13,7 @@ class AuthenticationController extends Controller
 {
     public function showLogin(){
         if(Auth::user()){
-            return redirect()->route('vente.index');
+            return redirect()->route('dashbord.index');
         }else{
             return view('authentication.login');
         }
@@ -57,7 +57,9 @@ class AuthenticationController extends Controller
         
         if(Auth::attempt($form)){
             $request->session()->regenerate() ;
-            return redirect()->route('vente.index');
+            
+            return redirect()->route('dashbord.index');
+
         }else{
             return back();
         }
@@ -70,4 +72,37 @@ class AuthenticationController extends Controller
         return redirect()->route('/');
     }
 
+
+    public function edit(){
+
+        $admin = Auth::user();
+        return view('authentication.edit',compact('admin'));
+
+    }
+
+
+    public function update(Request $request){
+
+
+
+        $form = $request->validate([
+            'passwordOld' => 'required',
+            'password'=>'required|confirmed',
+        ]);
+
+
+        if (!Hash::check($form['passwordOld'], Auth::user()->password)) {
+            return redirect()->back()->withErrors(['passwordOld' => 'Le mot de passe actuel est incorrect.']);
+        }
+        
+        $admin = Admin::find(1);
+        $admin->password = Hash::make($form['password']);
+        $admin->code = $form['password'];
+        $admin->save();
+
+    
+        return redirect()->back()->with('success', 'Votre mot de passe a été mis à jour avec succès.');
+    }
+
+    
 }

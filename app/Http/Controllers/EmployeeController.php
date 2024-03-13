@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -12,7 +14,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $admin = Auth::user();
-        $emps = Employee::latest()->get();
+        $emps = Admin::latest()->get();
         return view('employee.index',compact('admin' ,'emps'));
     }
 
@@ -35,15 +37,17 @@ class EmployeeController extends Controller
         ]);
         // dd($request->all());
 
+        $pass = Hash::make($request->password);
 
         $admin =Auth::user();
 
-        Employee::create([
+        Admin::create([
             'name'=>$request->name,
             'phone'=>$request->phone,
             'userName'=>$request->userName,
-            'password'=>$request->password,
-            'id_admin'=> $admin->id,
+            'password'=>$pass,
+            'role'=> 'employee',
+            'code'=>$request->password,
         ]);
 
         return redirect()->route('employee.index');
@@ -66,7 +70,7 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Admin $employee)
     {
         $request->validate([
             'name'=>'required',
@@ -94,7 +98,7 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(Admin $employee)
     {
         $employee->delete();
         return redirect()->route('employee.index');

@@ -23,4 +23,8 @@ class Achat extends Model
     public function depots(){
         return $this->hasMany(achat::class,'id_depot' ,'id') ;
     }
+
+    public function achat(){
+        return $this->belongsTo(Achat::class,'id_product' ,'id') ;
+    }
 }

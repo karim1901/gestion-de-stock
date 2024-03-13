@@ -14,6 +14,10 @@ a{
   color: rgb(240, 237, 237);
 }
 
+a ion-icon{
+  color: #000000;
+}
+
 /* Generic */
 .containerLogin {
   width: 100%;
@@ -185,6 +189,8 @@ a{
   border-bottom: 1px solid rgb(219, 219, 219);
   color: #4a585e;
   padding: 0 20px;
+  min-width: 1000px;
+  overflow: hidden;
 }
 
 .navBar .logo{
@@ -239,7 +245,10 @@ a{
 
 
 
-
+.containerContent{
+  min-width: 1000px;
+  overflow: hidden;
+}
 
 
 
@@ -304,11 +313,16 @@ a{
   /* margin: 0 10px; */
   /* background-color: #aac2c9; */
 }
+ 
+.navBar a  p{
+  color: #000000;
+}
 
 
-
-
-
+/* .containerContent .side .menu ul li svg{
+  padding-left: 10px;
+  border: solid #181818;
+} */
 
 
 
@@ -351,6 +365,11 @@ a{
 .containerContent .container .header p{
   margin-left: 30px;
   font-size: 25px;
+}
+
+.containerContent .container .header .icon{
+  width: 25px;
+  height: 25px;
 }
 .containerContent .container .header ion-icon{
   font-size: 25px;
@@ -419,6 +438,17 @@ a{
   width: 100%;
 }
 
+.titleProduct{
+  width: 20%;
+  overflow: hidden;
+}
+
+.titleProduct p {
+  height: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+
 .containerContent .container .tab table th{
   text-align: start;
   color: rgb(74, 88, 94);
@@ -451,6 +481,20 @@ a{
 .containerContent .container .tab table td:nth-child(9){
   text-align: center;
 } */
+
+
+.containerContent .container .tab  table tbody{
+  overflow-y: scroll;
+  display: block;
+  height: calc(100vh - 240px);
+}
+
+
+.containerContent .container .tab table tr{
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
 
 
 .containerContent .container .tab table th:last-child{
@@ -542,14 +586,22 @@ a{
   justify-content: space-between;
 }
 
+.containerContent .container .form .inputs.admin{
+  display: block;
+}
+
+.containerContent .container .form .inputs.admin input{
+  width: 100%;
+}
+
 
 .containerContent .container .form .inputs input{
-  width: 388px;
-  height: 35px;
-  padding-left: 15px;
-  margin-top: 5px;
-  outline: none;
-  display: block;
+width: 388px;
+height: 35px;
+padding-left: 15px;
+margin-top: 5px;
+outline: none;
+display: block;
 }
 
 .containerContent .container .form select{

@@ -45,8 +45,6 @@ window.addEventListener("load", mainF);
 
 
 
-
-
 function toggleMenu(){
 	document.querySelector('.container').classList.toggle('active')
 	document.querySelector('.side').classList.toggle('active')
@@ -87,4 +85,11 @@ document.querySelectorAll('.listRepo option').forEach(item => {
 		document.querySelector('.repo input').value = item.value
 	})
 })
+
+
+
+
+
+
+
 

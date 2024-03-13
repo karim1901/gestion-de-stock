@@ -16,7 +16,9 @@ class Admin extends Model
         'name' ,
         'phone',
         'userName',
-        'password'
+        'password',
+        'role',
+        'code'
     ];
 
     public function employees(){
